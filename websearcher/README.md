@@ -1,8 +1,3 @@
-# WebDistiller
-
-Official implementation for the KDD 2025 paper:
-
-**"WebDistiller: Joint Reasoning and Knowledge Distillation for Complex Question Answering over Web Sources"**
 
 ## Overview
 
@@ -131,3 +126,4 @@ WebDistiller is evaluated on three benchmarks:
 ## License
 
 This project is released for academic research purposes.
+
