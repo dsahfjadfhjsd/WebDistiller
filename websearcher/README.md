@@ -61,8 +61,8 @@ cp config/config.example.yaml config/config.yaml
 
 Edit `config/config.yaml` and fill in:
 
-- **model.main_model.api_key** — API key for the Reasoner (e.g., DeepSeek-R1)
-- **model.auxiliary_model.api_key** — API key for the Manager (e.g., Qwen2.5-32B)
+- **model.main_model.api_key** — API key for the Reasoner 
+- **model.auxiliary_model.api_key** — API key for the Manager
 - **model.evaluation_model.api_key** — API key for the LLM-as-judge evaluator
 - **tools.serper_api_keys** — [Serper](https://serper.dev/) API key(s) for web search
 
@@ -126,4 +126,5 @@ WebDistiller is evaluated on three benchmarks:
 ## License
 
 This project is released for academic research purposes.
+
 
