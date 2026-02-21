@@ -1,0 +1,137 @@
+
+model:
+  reasoner:
+    name: "qwq-32b"
+    api_base: "https://api.openai.com/v1"
+    api_key: "YOUR_API_KEY"
+    temperature: 0.1
+    max_tokens: 4096
+
+  manager:
+    name: "qwen2.5-32b-instruct"
+    api_base: "https://api.openai.com/v1"
+    api_key: "YOUR_API_KEY"
+    temperature: 0.3
+    max_tokens: 2048
+
+  main_model:
+    name: "qwq-32b"
+    api_base: "https://api.openai.com/v1"
+    api_key: "YOUR_API_KEY"
+    temperature: 0.1
+    max_tokens: 4096
+
+  auxiliary_model:
+    name: "qwen2.5-32b-instruct"
+    api_base: "https://api.openai.com/v1"
+    api_key: "YOUR_API_KEY"
+    temperature: 0.3
+    max_tokens: 2048
+
+  evaluation_model:
+    name: "deepseek-v3.2"
+    api_base: "https://api.openai.com/v1"
+    api_key: "YOUR_API_KEY"
+    temperature: 0.0
+    max_tokens: 512
+
+tools:
+  serper_api_keys:
+    - "YOUR_SERPER_API_KEY"
+    - "YOUR_SERPER_API_KEY"
+  serper_api_key: null
+
+  jina_api_key: null
+  use_jina: false
+
+  file_base_dir: "./data/files"
+
+  download:
+    large_file_threshold_mb: 20
+    segment_size_mb: 5
+    max_retries: 3
+
+  python_executor:
+    timeout: 10
+    max_concurrency: 8
+
+memory:
+  max_context_tokens: 30000
+  fold_threshold: 0.75
+
+  factual_memory:
+    enabled: true
+    max_candidates_per_key: 2
+    max_entries: 100
+
+  procedural_memory:
+    enabled: true
+    max_nodes: 50
+    keep_recent: 6
+
+  experiential_memory:
+    enabled: true
+    max_families: 10
+
+  cooldown_steps: 3
+  tail_length: 4
+  milestone_trigger: true
+
+  query:
+    facts_top_m: 10
+    trace_top_r: 6
+
+  episode_memory:
+    enabled: true
+    max_episodes: 5
+
+  working_memory:
+    enabled: true
+
+  tool_memory:
+    enabled: true
+    max_entries: 10
+
+  auto_summarize_tool_results:
+    enabled: true
+    threshold_chars: 10000
+    max_summary_tokens: 4000
+
+extraction_intent:
+  enabled: true
+  use_llm_synthesis: false
+
+reasoning:
+  max_iterations: 20
+  finalization:
+    trigger_remaining: 2
+    max_attempts: 2
+    max_tokens: 1200
+
+  stop_sequences:
+    - "</tool_call>"
+    - "\\boxed{"
+
+  markers:
+    begin_tool_call: "<tool_call>"
+    end_tool_call: "</tool_call>"
+    begin_tool_result: "<tool_call_result>"
+    end_tool_result: "</tool_call_result>"
+    begin_think: "<think>"
+    end_think: "</think>"
+    fold_memory: "<fold_memory>"
+    begin_memory_summary: "<memory_summary>"
+    end_memory_summary: "</memory_summary>"
+
+evaluation:
+  dataset_dir: "./data"
+  output_dir: "./outputs"
+
+  save_trajectories: true
+  save_memory_states: true
+
+logging:
+  level: "INFO"
+  log_dir: "./logs"
+  save_to_file: true
+  console_output: true
